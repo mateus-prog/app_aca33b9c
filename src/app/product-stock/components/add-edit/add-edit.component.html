@@ -1,0 +1,79 @@
+<div class="content-wrapper">
+    <breadcrumb [action]="breadcrumbAction" [module]="breadcrumbModule">
+    </breadcrumb>
+    <!-- /.content-header -->
+    
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-secondary">
+                        <!-- form start -->
+                        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                            <div class="card-body">
+                                <h4>Estoque do Produto</h4>
+                                <div class="form-group space-top">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="product_id">Produto</label>
+                                            <select *ngIf="products && products.length > 0"
+                                                formControlName="product_id" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.product_id.errors }">
+                                                <option *ngFor="let product of products;"
+                                                    value="{{product.id}}">{{product.name}}
+                                                </option>
+                                            </select>
+                                            <div *ngIf="submitted && f.product_id.errors" class="invalid-feedback">
+                                                <div *ngIf="f.product_id.errors.required"><i class="fas fa-times"></i> Campo é obrigatório</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="count">Quantidade</label>
+                                            <input type="input" formControlName="count" class="form-control" autocomplete="off" maxlength="3" placeholder="0"     
+                                            appNumberValidate
+                                            [ngClass]="{ 'is-invalid': submitted && f.count.errors }" />
+                                            <div *ngIf="submitted && f.count.errors" class="invalid-feedback">
+                                                <div *ngIf="f.count.errors.required"><i class="fas fa-times"></i> Campo é obrigatório</div>
+                                                <div *ngIf="f.count.errors.isNotNumber"><i class="fas fa-times"></i> Somente números</div>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="form-group space-top">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="is_sum">Estoque</label>
+                                            <select formControlName="is_sum" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.is_sum.errors }">
+                                                <option value="1">Adicionar</option>
+                                                <option value="0">Remover</option>
+                                            </select>
+                                            <div *ngIf="submitted && f.is_sum.errors" class="invalid-feedback">
+                                                <div *ngIf="f.is_sum.errors.required"><i class="fas fa-times"></i> Campo é obrigatório</div>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>    
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button [disabled]="loading" class="btn btn-success">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                    <i *ngIf="isAddMode" class="fas fa-save"></i> <span *ngIf="isAddMode" class="btn-icon-form">Salvar</span>
+                                    <i *ngIf="!isAddMode" class="fas fa-edit"></i> <span *ngIf="!isAddMode" class="btn-icon-form">Alterar</span>
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-undo-alt"></i> <span class="btn-icon-form" href="javascript:void(0)" (click)="backClicked()">Voltar</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

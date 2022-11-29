@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  nginx:
+    build:
+      context: ./
+      dockerfile: Dockerfile.nginx
+    image: mguizelini/nginx:prod
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      # - ./:/var/www/frontend
+      - ./docker/nginx:/etc/nginx/conf.d
+    tty: true
+    networks:
+      - easytoque-network
+
+networks:
+  easytoque-network:
+    driver: bridge

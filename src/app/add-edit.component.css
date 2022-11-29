@@ -1,0 +1,59 @@
+.background {
+    background-color: #F4F6F9;
+}
+
+.content-message h1 {
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    color: #eb8200;
+    text-align: center;
+}
+
+.content-message p {
+    margin-top: 40px;
+    font-family: Arial;
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.content-wrapper{
+    height: auto !important;
+}
+
+button{
+    margin-right: 20px !important;
+}
+
+.text-invalid{
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+.permission{
+    font-size: 10px;
+    padding-top: 5px;
+}
+
+h4{
+    font-weight: bold;
+    border-bottom: 2px solid #CCC;
+    padding-top: 10px;
+}
+
+.space-top{
+    padding-top:  15px;
+}
+
+.delete-center{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.btn-icon-form{
+    padding-left: 5px !important;
+}

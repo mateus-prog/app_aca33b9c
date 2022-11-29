@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    width: 100%;
+    height: 100% !important;
+    margin: 0;
+}
+
+.nav-pagination{
+    padding: 1.5rem 0;
+    margin: 0;
+    text-align: center;
+}
+
+.nav-pagination ul{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.nav-pagination ul.ngx-pagination li.pagination-previous,
+.nav-pagination ul.ngx-pagination li.pagination-next{
+    border-radius: .21rem;
+    border: 1px solid #F4F6F9;
+    background: #F4F6F9;
+    color: #F37A22;
+    font-weight: normal;
+}
+
+.nav-pagination ul.ngx-pagination li.pagination-previous:hover ,
+.nav-pagination ul.ngx-pagination li.pagination-next:hover{
+    background: #F4F6F9 !important;
+    font-weight: bold;
+}
+
+.nav-pagination ul.ngx-pagination li:not(.current, .disabled){
+    border-radius: .21rem !important;
+    border: 1px solid #F4F6F9 !important;
+    background-color: #F4F6F9 !important;
+    color: #F37A22 !important;
+}
+
+.nav-pagination ul.ngx-pagination li:hover:not(.current, .disabled) {
+    border-radius: .21rem;
+    border: 1px solid #FFF;
+    background-color: #FFF;
+    color: #F37A22;
+    font-weight: bold;
+}
+
+.nav-pagination ul.ngx-pagination li.current,
+.nav-pagination ul.ngx-pagination li.current:hover {
+    padding: 0.1875rem 0.625rem !important;
+    border-radius: .21rem !important;
+    background: #F37A22 !important;
+    color: #FFF !important;
+    font-weight: bold !important;
+}
+
+.nav-pagination ul.ngx-pagination li.disabled,
+.nav-pagination ul.ngx-pagination li.disabled:hover {
+    border: 1px solid #F4F6F9 !important;
+    background-color: #F4F6F9 !important;
+    color: #CACACA !important;
+    font-weight: normal !important;
+    cursor: default !important;
+}

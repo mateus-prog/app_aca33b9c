@@ -1,0 +1,83 @@
+<div class="content-wrapper">
+    <breadcrumb [action]="breadcrumbAction" [module]="breadcrumbModule">
+    </breadcrumb>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="input-icon">
+                        <div><i class="fas fa-search"></i></div>
+                        <input  [(ngModel)]="filter" #ctrl="ngModel"  class="form-control form-control-sm" 
+                        placeholder="Pesquisar" autofocus >
+                    </div>
+                </div>
+                <div class="col-md-2 btn-add">
+                  <a routerLink="add" class="btn btn-sm btn-success btn-block">
+                    <strong>Cadastrar</strong>
+                  </a>
+                </div>
+              </div>
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                <section class="col-lg-12 connectedSortable">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 24%;">Nome</th>
+                                        <th style="width: 20%;">Quantidade</th>
+                                        <th style="width: 23%;">Criado em</th>
+                                        <th style="width: 23%;">Modificado em</th>
+                                        <th style="width: 10%; text-align: center;" colspan="2">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let productStock of productsStockFilter() | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; let i = index">
+                                        <td>{{productStock.name}}</td>
+                                        <td><span class="badge bg-{{productStock.is_sum}}">{{productStock.count}}</span></td>
+                                        <td>{{productStock.created_at}}</td>
+                                        <td>{{productStock.updated_at}}</td>
+                                        <td style="text-align: center;">
+                                            <a routerLink="edit/{{productStock.id}}" class="btn btn-sm btn-primary"
+                                                title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-danger" title="Excluir" data-toggle="modal"
+                                                data-target="#modalDelete" (click)="showModalDelete(productStock)">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="!productsStock">
+                                        <td colspan="4" class="text-center">
+                                            <span class="spinner-border spinner-border-lg align-center"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <nav class="nav-pagination">
+                        <pagination-controls class="my-pagination" previousLabel="Anterior" nextLabel="Próximo"
+                            (pageChange)="paginaAtual = $event">
+                        </pagination-controls>
+                    </nav>
+                    <!-- /.card -->
+                </section>
+                <!-- right col -->
+            </div>
+        </div>
+    </section>
+    <app-modal-confirm [id]="'modalDelete'" [message]="messageModal" [inUse]="currentInUse" 
+    [title]="title" [buttonCancel]="buttonCancel" [buttonConfirm]="buttonConfirm"
+    (confirm)="confirm($event)"></app-modal-confirm>
+</div>
