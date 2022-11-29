@@ -4,6 +4,10 @@ Language| Framework | Runtime | Author |
 | --------| -------- | -------- |--------|
 javascript| Angular13 | node | Mateus |
 
+# Technologies
+- #### Angular13
+- #### Typescript
+- #### Docker
 ## Installation
 
 For development, you will need Node.js and a node global package
